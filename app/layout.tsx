@@ -15,7 +15,6 @@ const josefinSans = Josefin_Sans({
 export const metadata: Metadata = {
   title: "Don Galvan | Reštaurácia v Šali",
   description: "Exkluzívna reštaurácia Don Galvan v Šali ponúka jedinečné kulinárske zážitky v elegantnom prostredí.",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -36,6 +35,3 @@ export default function RootLayout({
   )
 }
 
-
-
-import './globals.css'
