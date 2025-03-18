@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { motion, useAnimation } from "framer-motion"
+import { useTheme } from "next-themes"
 
 export default function Home() {
   const controls = useAnimation()
@@ -13,6 +14,7 @@ export default function Home() {
   const welcomeRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const testimonialsRef = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +40,11 @@ export default function Home() {
 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [controls])
+
+  const isDark = theme === "dark"
+  const logoSrc = isDark
+    ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo%20biele-Xbg22QvOETXNTBZzyn9LkLlr4c0tav.png"
+    : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/343761348_561299316147763_2573134807779043085_n-removebg-preview-kJTrprCVnV0s6ttrFPkCFnSKqTbgVn.png"
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -126,13 +133,15 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-            <div className="md:w-1/2 relative h-[500px] w-full overflow-hidden group">
-              <Image
-                src="/placeholder.svg?height=1000&width=800"
-                alt="Interiér reštaurácie Don Galvan"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+            <div className="md:w-1/2 relative h-[500px] w-full flex items-center justify-center bg-muted/30 rounded-lg overflow-hidden group">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 transition-transform duration-700 group-hover:scale-105">
+                <Image
+                  src={logoSrc || "/placeholder.svg"}
+                  alt="Don Galvan Restaurant Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
